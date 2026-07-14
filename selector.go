@@ -16,6 +16,12 @@ type selectorRule struct {
 	styles   []attr
 }
 
+// StyleClass generates a unique class for these styles instead of writing them inline.
+// This allows pseudo-classes like :hover to override the base properties naturally.
+func (n *Node) StyleClass(s Style) *Node {
+	return n.addRule("", s) // Empty string selector creates a base class rule (e.g. ".hb-1 { ... }")
+}
+
 // Hover attaches a :hover rule.
 func (n *Node) Hover(s Style) *Node {
 	return n.addRule(":hover", s)
@@ -101,7 +107,7 @@ func renderSelectorRuleCSS(rules []selectorRule) string {
 			sb.WriteString(s.key)
 			sb.WriteString(":")
 			sb.WriteString(s.value)
-			sb.WriteString(";")
+			sb.WriteString(" !important;") // overrides inline styles!
 		}
 
 		sb.WriteString("}")
