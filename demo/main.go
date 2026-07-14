@@ -52,8 +52,7 @@ func counterFragment(n int) *htmlbuilder.Node {
 func landing_page() string {
 	doc := htmlbuilder.New().
 		Title("GoHTML").
-		Meta(map[string]string{"charset": "utf-8"}).
-		Meta(map[string]string{"name": "viewport", "content": "width=device-width, initial-scale=1"}).
+		MetaDefault().
 		Meta(map[string]string{"name": "description", "content": "A fluent, type-safe HTML builder for Go. No templates, no string concatenation."}).
 		Icon("https://cdn-icons-png.flaticon.com/512/186/186320.png", "image/png").
 		Link(map[string]string{"rel": "preconnect", "href": "https://fonts.googleapis.com"}).

@@ -90,6 +90,21 @@ func (d *Document) Meta(attrs map[string]string) *Document {
 	return d
 }
 
+// MetaDefault appends common, standard <meta> tags (charset and viewport) to the <head>.
+// Usage: doc.MetaDefault()
+func (d *Document) MetaDefault() *Document {
+	// Standard charset for modern web pages
+	d.Meta(map[string]string{"charset": "utf-8"})
+
+	// Standard responsive viewport tag for mobile-friendly design
+	d.Meta(map[string]string{
+		"name":    "viewport",
+		"content": "width=device-width, initial-scale=1.0",
+	})
+
+	return d
+}
+
 // Link appends a <link> tag to <head>, e.g. for stylesheets.
 // Usage: doc.Link(map[string]string{"rel": "stylesheet", "href": "/style.css"})
 func (d *Document) Link(attrs map[string]string) *Document {
