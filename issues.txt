@@ -1,0 +1,10 @@
+If you are reading this text file
+Then woah, it might be worth it
+Because this little script is where I write problems I will tackle later
+How does this work?
+Well I don't know, but what I do know is that, I use, test, spot a problem, and write something for fixing
+Well how?
+
+Simple
+
+# Isssue 1: Possible JS Go Engine Implementation
