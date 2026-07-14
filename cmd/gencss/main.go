@@ -86,7 +86,7 @@ func main() {
 	fmt.Fprintln(f, "\treturn n")
 	fmt.Fprintln(f, "}")
 
-	// extras 
+	// extras
 
 	fmt.Fprintln(f, "// styleToAttrs converts a Style struct into its set attrs, skipping zero-value fields.")
 	fmt.Fprintln(f, "func styleToAttrs(s Style) []attr {")
