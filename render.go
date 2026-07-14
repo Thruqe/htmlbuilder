@@ -83,12 +83,15 @@ func (n *Node) renderStyles(w io.Writer) {
 	if len(n.styles) == 0 {
 		return
 	}
+
 	var sb strings.Builder
+
 	for _, s := range n.styles {
 		sb.WriteString(s.key)
-		sb.WriteString(":")
+		sb.WriteString(": ")
 		sb.WriteString(s.value)
-		sb.WriteString(";")
+		sb.WriteString("; ")
 	}
-	fmt.Fprintf(w, ` style="%s"`, html.EscapeString(sb.String()))
+
+	fmt.Fprintf(w, ` style="%s"`, html.EscapeString(strings.TrimSpace(sb.String())))
 }

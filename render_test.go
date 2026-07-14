@@ -44,9 +44,19 @@ func TestRender_ClassesJoinedWithSpace(t *testing.T) {
 }
 
 func TestRender_StylesRenderedInOrder(t *testing.T) {
-	out := El("div").CSS(Style{Padding: "1rem", Color: "#333"}).String()
-	if !strings.Contains(out, `style="padding:1rem;color:#333;"`) {
-		t.Fatalf("expected ordered inline style, got %q", out)
+	node := El("div").
+		SetStyle("color", "#333").
+		SetStyle("padding", "1rem")
+
+	got := node.String()
+
+	expected := `style="color: #333; padding: 1rem;"`
+
+	if !strings.Contains(got, expected) {
+		t.Fatalf(
+			"expected ordered inline style, got %q",
+			got,
+		)
 	}
 }
 
@@ -58,7 +68,7 @@ func TestRender_VoidElementNoClosingTag(t *testing.T) {
 }
 
 func TestRender_ImgVoidElementWithAttrs(t *testing.T) {
-	out := Img().String()
+	out := Img().Attr("src", "/logo.png").Attr("alt", "logo").String()
 	if !strings.HasPrefix(out, "<img ") || strings.Contains(out, "</img>") {
 		t.Fatalf("expected self-contained void img tag, got %q", out)
 	}
