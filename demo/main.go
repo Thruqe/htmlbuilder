@@ -17,8 +17,7 @@ var (
 func main() {
 	http.HandleFunc("/", landing_page_handler)
 	http.HandleFunc("/api/counter/increment", increment_handler)
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
-
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(embeddedStatic())))
 	log.Println("listening on :8080")
 	if err := http.ListenAndServe(":8080", nil); err != nil {
 		log.Fatal(err)
