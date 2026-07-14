@@ -391,10 +391,6 @@ func mobileNavLinkStyle() htmlbuilder.Style {
 
 </details>
 
-## Contributing
-
-I love pull requests! Feel free to submit a PR to help make this project better.
-
 ## License
 
 This project is [MIT LICENSED](./LICENSE)
